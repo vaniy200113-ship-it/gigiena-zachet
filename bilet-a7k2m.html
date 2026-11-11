@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Билет 1 — Гигиена ФКиС</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f4f8; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 16px; position: relative; overflow-x: hidden; }
+  .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg); font-size: 120px; font-weight: 900; color: rgba(0, 80, 160, 0.06); white-space: nowrap; pointer-events: none; user-select: none; z-index: 0; letter-spacing: 8px; }
+  .watermark-small { position: fixed; top: 20px; right: 20px; font-size: 13px; color: rgba(0, 80, 160, 0.25); pointer-events: none; user-select: none; z-index: 0; text-align: right; line-height: 1.4; }
+  .card { background: #fff; border-radius: 20px; box-shadow: 0 8px 40px rgba(0, 40, 80, 0.12); max-width: 680px; width: 100%; padding: 36px 32px 32px; position: relative; z-index: 1; }
+  .header { text-align: center; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 2px solid #e2e8f0; }
+  .header .discipline { font-size: 14px; color: #64748b; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+  .header .title { font-size: 26px; font-weight: 700; color: #1e3a5f; }
+  .header .group { font-size: 13px; color: #94a3b8; margin-top: 6px; }
+  .progress { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; transition: background 0.2s; }
+  .dot.active { background: #2563eb; }
+  .dot.done { background: #93c5fd; }
+  .situation { background: #f8fafc; border-left: 4px solid #3b82f6; padding: 18px 20px; border-radius: 0 12px 12px 0; margin-bottom: 24px; font-size: 15px; line-height: 1.65; color: #334155; }
+  .situation .label { font-weight: 700; color: #1e40af; margin-bottom: 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+  .question-box { display: none; animation: fadeIn 0.25s ease; }
+  .question-box.show { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .question-num { font-size: 13px; color: #2563eb; font-weight: 600; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+  .question-text { font-size: 18px; line-height: 1.7; color: #1e293b; font-weight: 500; margin-bottom: 32px; min-height: 80px; }
+  .btn { display: inline-block; background: #2563eb; color: #fff; border: none; padding: 14px 40px; font-size: 16px; font-weight: 600; border-radius: 12px; cursor: pointer; transition: background 0.2s, transform 0.1s; width: 100%; }
+  .btn:hover { background: #1d4ed8; }
+  .btn:active { transform: scale(0.98); }
+  .btn.finish { background: #059669; }
+  .btn.finish:hover { background: #047857; }
+  .end-screen { display: none; text-align: center; padding: 20px 0; }
+  .end-screen.show { display: block; }
+  .end-screen .icon { font-size: 56px; margin-bottom: 16px; }
+  .end-screen .msg { font-size: 20px; font-weight: 700; color: #1e3a5f; margin-bottom: 8px; }
+  .end-screen .sub { font-size: 14px; color: #94a3b8; }
+  @media (max-width: 480px) { .card { padding: 24px 20px; } .header .title { font-size: 20px; } .question-text { font-size: 16px; min-height: 60px; } .watermark { font-size: 70px; } }
+</style>
+</head>
+<body>
+<div class="watermark">БИЛЕТ № 1</div>
+<div class="watermark-small">Гигиена ФКиС · Зачёт<br>Группа 23521</div>
+<div class="card">
+  <div class="header">
+    <div class="discipline">Гигиена физической культуры и спорта</div>
+    <div class="title">Билет № 1</div>
+    <div class="group">Группа 23521 · Зачёт</div>
+  </div>
+  <div class="progress">
+    <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+  <div class="situation">
+    <div class="label">Ситуация</div>
+    В секции дзюдо (15 подростков, 12–14 лет) за 10 дней зарегистрировано 4 случая стафилококковой пиодермии (гнойнички на лице и руках). Тренировки проходят на общем ковре, который обрабатывается 1 раз в день вечером. Спортсмены ходят в душевых босиком, полотенца общие. Один из заболевших продолжает тренироваться («это просто прыщи»).
+  </div>
+  <div class="question-box show" id="q1">
+    <div class="question-num">Вопрос 1 из 4</div>
+    <div class="question-text">Определите наиболее вероятный путь передачи. Обоснуйте, почему общий ковёр и душевая — критические точки.</div>
+    <button class="btn" onclick="next(2)">Далее →</button>
+  </div>
+  <div class="question-box" id="q2">
+    <div class="question-num">Вопрос 2 из 4</div>
+    <div class="question-text">Составьте план действий тренера на ближайшие 24 часа.</div>
+    <button class="btn" onclick="next(3)">Далее →</button>
+  </div>
+  <div class="question-box" id="q3">
+    <div class="question-num">Вопрос 3 из 4</div>
+    <div class="question-text">Разработайте регламент обработки ковра и правила личной гигиены для секции.</div>
+    <button class="btn" onclick="next(4)">Далее →</button>
+  </div>
+  <div class="question-box" id="q4">
+    <div class="question-num">Вопрос 4 из 4</div>
+    <div class="question-text">Какие долгосрочные меры нужно ввести, чтобы не повторилось?</div>
+    <button class="btn finish" onclick="next(5)">Завершить</button>
+  </div>
+  <div class="end-screen" id="end">
+    <div class="icon">✅</div>
+    <div class="msg">Билет завершён</div>
+    <div class="sub">Гигиена ФКиС · Билет № 1</div>
+  </div>
+</div>
+<script>
+  function next(step) {
+    document.querySelectorAll('.question-box').forEach(el => el.classList.remove('show'));
+    document.querySelectorAll('.dot').forEach((el, i) => {
+      el.classList.remove('active');
+      if (i < step - 1) el.classList.add('done');
+      if (i === step - 1) el.classList.add('active');
+    });
+    if (step <= 4) {
+      document.getElementById('q' + step).classList.add('show');
+    } else {
+      document.getElementById('end').classList.add('show');
+      document.querySelectorAll('.dot').forEach(el => { el.classList.remove('active'); el.classList.add('done'); });
+    }
+  }
+</script>
+</body>
+</html>
